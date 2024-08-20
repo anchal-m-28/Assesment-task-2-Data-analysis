@@ -4,6 +4,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#----Global Variables----#
+quit = False
+
 #----Define Functions----#
 def show_original_data():
     murders_by_country_df = pd.read_csv('murders_by_country.csv')
@@ -61,29 +64,38 @@ def show_bottom_5_countries_visualised():
     plt.show()
 
 #----User options----#
-print('Welcome! To get started press either 1, 2, 3, 4, 5, 6 or 7.')
-print('Pressing 1 will read and display the unaltered "murders by country" dataset in a dataframe.')
-print('Pressing 2 will clean and analyse the dataset before displaying it in a dataframe.')
-print('Pressing 3 will show the top 5 countries with MOST murders in a dataframe.')
-print('Pressing 4 will show the top 5 countries with LEAST murders in a dataframe.')
-print('Pressing 5 will visualise the full dataset using a Matplotlib chart.')
-print('Pressing 6 will visualise the top 5 countries with the MOST murders using a Matplotlib chart.')
-print('Pressing 7 will visualise the top 5 countries with the LEAST murders using a Matplotlib chart.')
+def userOptions():
+    global quit
+    
+    print('Welcome! To get started press either 1, 2, 3, 4, 5, 6, 7 or 8.')
+    print('Pressing 1 will read and display the unaltered "murders by country" dataset in a dataframe.')
+    print('Pressing 2 will clean and analyse the dataset before displaying it in a dataframe.')
+    print('Pressing 3 will show the top 5 countries with MOST murders in a dataframe.')
+    print('Pressing 4 will show the top 5 countries with LEAST murders in a dataframe.')
+    print('Pressing 5 will visualise the full dataset using a Matplotlib chart.')
+    print('Pressing 6 will visualise the top 5 countries with the MOST murders using a Matplotlib chart.')
+    print('Pressing 7 will visualise the top 5 countries with the LEAST murders using a Matplotlib chart.')
+    print('Pressing 8 will stop the program.')
 
-user_choice = int(input('Enter a number between 1 and 7: '))
-if user_choice == 1:
-    show_original_data()
-elif user_choice == 2:
-    show_updated_data()
-elif user_choice == 3:
-    show_top_5_countries()
-elif user_choice == 4:
-    show_bottom_5_countries()
-elif user_choice == 5:
-    show_updated_data_visualised()
-elif user_choice == 6:
-    show_top_5_countries_visualised()
-elif user_choice == 7:
-    show_bottom_5_countries_visualised()
-else:
-    print('Error!!! Try entering a number between 1 and 7')
+    user_choice = int(input('Enter a number between 1 and 8: '))
+    if user_choice == 1:
+        show_original_data()
+    elif user_choice == 2:
+        show_updated_data()
+    elif user_choice == 3:
+        show_top_5_countries()
+    elif user_choice == 4:
+        show_bottom_5_countries()
+    elif user_choice == 5:
+        show_updated_data_visualised()
+    elif user_choice == 6:
+        show_top_5_countries_visualised()
+    elif user_choice == 7:
+        show_bottom_5_countries_visualised()
+    elif user_choice == 8:
+        quit = True
+    else:
+        print('Error!!! Try entering a number between 1 and 7')
+
+while not quit:
+    userOptions()
